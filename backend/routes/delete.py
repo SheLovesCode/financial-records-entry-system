@@ -6,7 +6,6 @@ from sqlalchemy.exc import SQLAlchemyError
 
 blp = Blueprint('TransactionDeleteOperation',__name__)
 
-# Delete a transaction by ID
 @blp.delete('/transactions/<int:txn_id>')
 def delete_transaction(txn_id):
     try:

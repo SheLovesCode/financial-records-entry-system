@@ -15,7 +15,6 @@ def HelloWorld():
 @blp.get('/db_health')
 def health_check():
     try:
-        # Attempt to execute a simple query
         transaction_count = Transaction.query.count()
 
         return jsonify({
@@ -25,7 +24,6 @@ def health_check():
         }), 200
 
     except SQLAlchemyError as e:
-        # Handle database connection errors
         return jsonify({
             "status": "error",
             "message": "Database connection failed",
@@ -37,7 +35,6 @@ def get_transactions():
     try:
         transactions = Transaction.query.all()
 
-        # Return all transactions using the TransactionOutput schema
         return jsonify([TransactionOutput(
             id=txn.id,
             amount=txn.amount,
@@ -49,13 +46,11 @@ def get_transactions():
     except SQLAlchemyError as e:
         return jsonify({"error": str(e)}), 500
 
-# Get a single transaction by ID
 @blp.get('/transactions/<int:txn_id>')
 def get_transaction_id(txn_id):
     try:
         txn = Transaction.query.get(txn_id)
         if txn:
-            # Return the transaction using the TransactionOutput schema
             return jsonify(TransactionOutput(
                 id=txn.id,
                 amount=txn.amount,
@@ -71,7 +66,6 @@ def get_transaction_id(txn_id):
 @blp.get('/transaction_balance')
 def get_transactions_balance():
     try:
-        # Query the database to calculate the total balance
         balance = db.session.query(db.func.sum(Transaction.amount)).scalar() or 0
 
         return jsonify({"Total Running Balance R": balance}), 200

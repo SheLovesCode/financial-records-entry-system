@@ -168,7 +168,17 @@ function ViewSingleTransaction() {
                 </TableRow>
                 <TableRow>
                   <TableCell>Date</TableCell>
-                  <TableCell>{transaction.date}</TableCell>
+                  <TableCell>
+                    {new Date(transaction.date).toLocaleString('en-GB', {
+                      weekday: 'short',
+                      day: '2-digit',
+                      month: 'short',
+                      year: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      hour12: false,
+                    })}
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Type</TableCell>

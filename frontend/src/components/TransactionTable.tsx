@@ -106,6 +106,22 @@ export default function TransactionTable({
       type: 'string',
       flex: 2,
       headerAlign: 'center',
+      renderCell: (params) => {
+        const formattedDate = new Date(params.value).toLocaleString('en-GB', {
+          weekday: 'short',
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false,
+        });
+        return (
+          <Typography sx={{ display: 'contents', alignItems: 'center' }}>
+            {formattedDate}
+          </Typography>
+        );
+      },
     },
     {
       field: 'description',

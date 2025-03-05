@@ -98,14 +98,19 @@ const TransactionModal = ({
               }}
               error={!!errors.amount}
               helperText={errors.amount?.message}
-              {...register('amount', { required: true })}
+              {...register('amount', {
+                required: 'Amount is required',
+                validate: (value) =>
+                  value >= 0.01 ||
+                  'Amount must be greater than or equal to 0.01',
+              })}
             />
             <FormControl fullWidth margin="normal" error={!!errors.type}>
               <InputLabel>Type</InputLabel>
               <Select
                 label="Type"
                 {...register('type', { required: true })}
-                defaultValue={transaction?.type || 'credit'} // Provide a default value here
+                defaultValue={transaction?.type || 'credit'}
               >
                 <MenuItem value="credit">Credit</MenuItem>
                 <MenuItem value="debit">Debit</MenuItem>

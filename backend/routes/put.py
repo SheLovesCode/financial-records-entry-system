@@ -14,7 +14,6 @@ blp = Blueprint('TransactionPutRequests',__name__)
 @blp.put('/transactions/<int:txn_id>')
 def update_transaction(txn_id):
     try:
-        # Validate input data using the TransactionInput schema
         data = TransactionInput(**request.get_json())
     except ValidationError as e:
         return jsonify({"error": str(e)}), 400
@@ -22,14 +21,12 @@ def update_transaction(txn_id):
     try:
         txn = Transaction.query.get(txn_id)
         if txn:
-            # Update the transaction
             txn.amount = data.amount
             txn.type = data.type
             txn.description = data.description
 
             db.session.commit()
 
-            # Return the updated transaction using the TransactionOutput schema
             return jsonify(TransactionOutput(
                 id=txn.id,
                 amount=txn.amount,

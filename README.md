@@ -81,7 +81,7 @@ To stop the running containers, use:
 ## Troubleshooting
 - If you encounter a 'Connection to server at "postgres", port 5432 failed' after running 
   ``docker compose up --build``
-  1. Stop your containers by CTRL+C
+  1. Stop your containers by pressing CTRL+C
   2. Run ``docker compose up`` 
 
 - Ensure all ports (5432, 4000, 3000, 8080) are free before starting the services.

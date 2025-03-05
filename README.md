@@ -22,7 +22,7 @@ This project allows users to track financial transactions for a single account. 
 
 ## Technologies Used
 
-- **Frontend**: React.js, TypeScript, CSS/SASS
+- **Frontend**: React, TypeScript, Material UI
 - **Backend**: Flask, Python
 - **Database**: PostgreSQL
 - **Containerization**: Docker

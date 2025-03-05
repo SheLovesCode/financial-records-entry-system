@@ -32,7 +32,7 @@ export default function TransactionTable({
   setTransactions,
 }: TransactionTableProps) {
   const navigate = useNavigate();
-  const paginationModel = { page: 0, pageSize: 5 };
+  const paginationModel = { page: 0, pageSize: 10 };
   const [loading, setLoading] = useState(false);
   const [openEditTransaction, setOpenEditTransaction] = useState(false);
   const [selectedTransaction, setSelectedTransaction] =
@@ -188,7 +188,7 @@ export default function TransactionTable({
             rows={transactions}
             columns={columns}
             initialState={{ pagination: { paginationModel } }}
-            pageSizeOptions={[5, 10]}
+            pageSizeOptions={[5, 10, 15, 20]}
             sx={{
               border: 0,
               backgroundColor: '#fff',

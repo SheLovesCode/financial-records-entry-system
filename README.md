@@ -63,7 +63,7 @@ Run the following command to build and start the required services:
 This will start the following services:
 - PostgreSQL Database (Port: 5432)
 - Nginx (Port: 80)
-- FastAPI Service (Port: 4000 )
+- FastAPI Backend (Port: 4000 )
 - React Frontend (Port: 3000)
 
 The app runs on `http://localhost:3000/`
